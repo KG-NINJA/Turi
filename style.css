@@ -1,0 +1,151 @@
+:root {
+  color-scheme: dark;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1a324e 0%, #08131f 70%);
+  color: #eef7ff;
+}
+
+.game-shell {
+  width: min(92vw, 720px);
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(7, 15, 24, 0.82);
+  border: 1px solid rgba(142, 192, 255, 0.3);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #c8deef;
+}
+
+.lake {
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(64, 134, 193, 0.25), rgba(22, 70, 113, 0.3));
+  border: 1px solid rgba(147, 215, 255, 0.32);
+}
+
+.meter {
+  position: relative;
+  height: 58px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #19344d, #0d2133);
+  overflow: hidden;
+  border: 1px solid rgba(178, 220, 255, 0.24);
+}
+
+.fish-zone {
+  position: absolute;
+  top: 10px;
+  height: calc(100% - 20px);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ec6f67, #d74444);
+  box-shadow: 0 0 10px rgba(252, 115, 110, 0.7);
+}
+
+.fish-zone::before {
+  content: "HIT";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+}
+
+.cursor {
+  position: absolute;
+  top: 4px;
+  width: 6px;
+  height: calc(100% - 8px);
+  border-radius: 999px;
+  background: #f5fbff;
+  box-shadow: 0 0 14px rgba(245, 251, 255, 0.85);
+}
+
+.panel {
+  display: grid;
+  gap: 12px;
+}
+
+.tap-button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #08213a;
+  background: linear-gradient(180deg, #8fceff, #67b8f4);
+  cursor: pointer;
+  transition: transform 0.08s ease, filter 0.2s ease;
+}
+
+.tap-button:hover {
+  filter: brightness(1.08);
+}
+
+.tap-button:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+.tap-button.flash-success {
+  background: linear-gradient(180deg, #9ef7b7, #4fd082);
+}
+
+.tap-button.flash-fail {
+  background: linear-gradient(180deg, #ffaaaa, #ef5d5d);
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stats p {
+  margin: 0;
+}
+
+.message {
+  margin: 0;
+  min-height: 1.6em;
+  color: #ffdeb3;
+}
+
+.help {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(199, 223, 248, 0.2);
+}
+
+.help h2 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.help ul {
+  margin: 0;
+  padding-left: 1.2em;
+  color: #cae0f1;
+}

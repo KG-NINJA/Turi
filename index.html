@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>シビア釣りタイミングゲーム</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <h1>シビア釣りタイミングゲーム</h1>
+      <p class="subtitle">「今だ！」と思った瞬間にタップ。遅れても早すぎても失敗。</p>
+
+      <section class="lake" aria-label="釣り場">
+        <div class="meter" aria-hidden="true">
+          <div id="fish-zone" class="fish-zone"></div>
+          <div id="cursor" class="cursor"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <button id="tap-button" class="tap-button">タップして合わせる</button>
+        <div class="stats">
+          <p>連続成功: <strong id="combo">0</strong></p>
+          <p>最高連続: <strong id="best">0</strong></p>
+        </div>
+        <p id="message" class="message">魚の気配を読む…</p>
+      </section>
+
+      <section class="help">
+        <h2>ルール</h2>
+        <ul>
+          <li>白い針（カーソル）が左右に往復します。</li>
+          <li>赤い「HIT」ゾーンに重なった瞬間だけ成功です。</li>
+          <li>成功するたびに速度アップ＆判定幅が狭くなります。</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
