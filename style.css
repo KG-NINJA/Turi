@@ -37,71 +37,11 @@ h1 {
 }
 
 .lake {
-  margin: 20px 0 14px;
+  margin: 20px 0;
   padding: 18px;
   border-radius: 14px;
   background: linear-gradient(180deg, rgba(64, 134, 193, 0.25), rgba(22, 70, 113, 0.3));
   border: 1px solid rgba(147, 215, 255, 0.32);
-}
-
-.water-surface {
-  position: relative;
-  height: 56px;
-  margin-bottom: 12px;
-  overflow: hidden;
-  border-radius: 10px;
-  background: linear-gradient(180deg, rgba(115, 180, 230, 0.2), rgba(12, 42, 67, 0.18));
-}
-
-.water-surface::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.06) 0 20px,
-    rgba(255, 255, 255, 0.02) 20px 40px
-  );
-  animation: wave-flow 5s linear infinite;
-}
-
-.fish {
-  position: absolute;
-  top: 50%;
-  font-size: 1.3rem;
-  filter: drop-shadow(0 0 8px rgba(154, 227, 255, 0.55));
-  transform: translateY(-50%);
-  opacity: 0.9;
-}
-
-.fish-a {
-  animation: swim-right 7.8s linear infinite;
-}
-
-.fish-b {
-  top: 28%;
-  animation: swim-left 6.4s linear infinite;
-  animation-delay: -1.5s;
-}
-
-.fish-c {
-  top: 72%;
-  font-size: 1.1rem;
-  animation: swim-right 8.9s linear infinite;
-  animation-delay: -4.3s;
-}
-
-.splash {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
-  font-size: 1.3rem;
-  opacity: 0;
-}
-
-.splash.active {
-  animation: splash-pop 0.55s ease-out;
 }
 
 .meter {
@@ -144,61 +84,6 @@ h1 {
   box-shadow: 0 0 14px rgba(245, 251, 255, 0.85);
 }
 
-.tension-panel {
-  margin-bottom: 12px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(190, 226, 255, 0.25);
-  background: rgba(16, 33, 51, 0.65);
-  display: none;
-}
-
-.tension-panel.active {
-  display: block;
-}
-
-.tension-title {
-  margin: 0 0 8px;
-  color: #cfe8ff;
-  font-size: 0.95rem;
-}
-
-.tension-meter {
-  position: relative;
-  height: 16px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: linear-gradient(90deg, #2f6f9d, #b8c859, #de6b55);
-}
-
-.safe-zone {
-  position: absolute;
-  left: 28%;
-  width: 44%;
-  top: 1px;
-  bottom: 1px;
-  border: 2px solid rgba(230, 251, 187, 0.85);
-  border-radius: 999px;
-}
-
-.tension-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.65);
-}
-
-.tension-labels {
-  margin-top: 6px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.78rem;
-  color: #c2d9ec;
-}
-
 .panel {
   display: grid;
   gap: 12px;
@@ -220,8 +105,7 @@ h1 {
   filter: brightness(1.08);
 }
 
-.tap-button:active,
-.tap-button.reeling {
+.tap-button:active {
   transform: translateY(1px) scale(0.995);
 }
 
@@ -264,27 +148,4 @@ h1 {
   margin: 0;
   padding-left: 1.2em;
   color: #cae0f1;
-}
-
-@keyframes swim-right {
-  0% { left: -12%; transform: translateY(-50%) scaleX(1); }
-  45% { transform: translateY(-62%) scaleX(1); }
-  100% { left: 110%; transform: translateY(-50%) scaleX(1); }
-}
-
-@keyframes swim-left {
-  0% { left: 110%; transform: translateY(-50%) scaleX(-1); }
-  50% { transform: translateY(-40%) scaleX(-1); }
-  100% { left: -12%; transform: translateY(-50%) scaleX(-1); }
-}
-
-@keyframes splash-pop {
-  0% { opacity: 0; transform: translate(-50%, -45%) scale(0.4); }
-  35% { opacity: 1; transform: translate(-50%, -62%) scale(1.1); }
-  100% { opacity: 0; transform: translate(-50%, -75%) scale(0.75); }
-}
-
-@keyframes wave-flow {
-  from { transform: translateX(0); }
-  to { transform: translateX(40px); }
 }
