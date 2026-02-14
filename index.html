@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>シビア釣りタイミングゲーム</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <h1>シビア釣りタイミングゲーム</h1>
+      <p class="subtitle">まずは合わせ、次にテンション管理。緩すぎても張りすぎても逃げられる。</p>
+
+      <section class="lake" aria-label="釣り場">
+        <div class="water-surface" aria-hidden="true">
+          <div class="fish fish-a">🐟</div>
+          <div class="fish fish-b">🐠</div>
+          <div class="fish fish-c">🐡</div>
+          <div id="splash" class="splash">💦</div>
+        </div>
+        <div class="meter" aria-hidden="true">
+          <div id="fish-zone" class="fish-zone"></div>
+          <div id="cursor" class="cursor"></div>
+        </div>
+      </section>
+
+      <section id="tension-panel" class="tension-panel" aria-live="polite">
+        <p class="tension-title">駆け引きフェーズ: 糸テンションをキープ！</p>
+        <div class="tension-meter" aria-hidden="true">
+          <div class="safe-zone"></div>
+          <div id="tension-fill" class="tension-fill"></div>
+        </div>
+        <div class="tension-labels">
+          <span>緩い</span>
+          <span>適正</span>
+          <span>張りすぎ</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <button id="tap-button" class="tap-button">タップして合わせる</button>
+        <div class="stats">
+          <p>連続成功: <strong id="combo">0</strong></p>
+          <p>最高連続: <strong id="best">0</strong></p>
+        </div>
+        <p id="message" class="message">魚の気配を読む…</p>
+      </section>
+
+      <section class="help">
+        <h2>ルール</h2>
+        <ul>
+          <li>白い針（カーソル）が左右に往復。赤い「HIT」ゾーンで合わせる。</li>
+          <li>ヒット後はボタン長押し（または Space / Enter 長押し）で巻く。</li>
+          <li>テンションが一定時間「緩すぎ / 張りすぎ」だとバラし。</li>
+          <li>駆け引きを時間内に耐えるとキャッチ成功。</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>

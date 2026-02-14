@@ -1,0 +1,290 @@
+:root {
+  color-scheme: dark;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1a324e 0%, #08131f 70%);
+  color: #eef7ff;
+}
+
+.game-shell {
+  width: min(92vw, 720px);
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(7, 15, 24, 0.82);
+  border: 1px solid rgba(142, 192, 255, 0.3);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #c8deef;
+}
+
+.lake {
+  margin: 20px 0 14px;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(64, 134, 193, 0.25), rgba(22, 70, 113, 0.3));
+  border: 1px solid rgba(147, 215, 255, 0.32);
+}
+
+.water-surface {
+  position: relative;
+  height: 56px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(115, 180, 230, 0.2), rgba(12, 42, 67, 0.18));
+}
+
+.water-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 0 20px,
+    rgba(255, 255, 255, 0.02) 20px 40px
+  );
+  animation: wave-flow 5s linear infinite;
+}
+
+.fish {
+  position: absolute;
+  top: 50%;
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(154, 227, 255, 0.55));
+  transform: translateY(-50%);
+  opacity: 0.9;
+}
+
+.fish-a {
+  animation: swim-right 7.8s linear infinite;
+}
+
+.fish-b {
+  top: 28%;
+  animation: swim-left 6.4s linear infinite;
+  animation-delay: -1.5s;
+}
+
+.fish-c {
+  top: 72%;
+  font-size: 1.1rem;
+  animation: swim-right 8.9s linear infinite;
+  animation-delay: -4.3s;
+}
+
+.splash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  font-size: 1.3rem;
+  opacity: 0;
+}
+
+.splash.active {
+  animation: splash-pop 0.55s ease-out;
+}
+
+.meter {
+  position: relative;
+  height: 58px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #19344d, #0d2133);
+  overflow: hidden;
+  border: 1px solid rgba(178, 220, 255, 0.24);
+}
+
+.fish-zone {
+  position: absolute;
+  top: 10px;
+  height: calc(100% - 20px);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ec6f67, #d74444);
+  box-shadow: 0 0 10px rgba(252, 115, 110, 0.7);
+}
+
+.fish-zone::before {
+  content: "HIT";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+}
+
+.cursor {
+  position: absolute;
+  top: 4px;
+  width: 6px;
+  height: calc(100% - 8px);
+  border-radius: 999px;
+  background: #f5fbff;
+  box-shadow: 0 0 14px rgba(245, 251, 255, 0.85);
+}
+
+.tension-panel {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(190, 226, 255, 0.25);
+  background: rgba(16, 33, 51, 0.65);
+  display: none;
+}
+
+.tension-panel.active {
+  display: block;
+}
+
+.tension-title {
+  margin: 0 0 8px;
+  color: #cfe8ff;
+  font-size: 0.95rem;
+}
+
+.tension-meter {
+  position: relative;
+  height: 16px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #2f6f9d, #b8c859, #de6b55);
+}
+
+.safe-zone {
+  position: absolute;
+  left: 28%;
+  width: 44%;
+  top: 1px;
+  bottom: 1px;
+  border: 2px solid rgba(230, 251, 187, 0.85);
+  border-radius: 999px;
+}
+
+.tension-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.65);
+}
+
+.tension-labels {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #c2d9ec;
+}
+
+.panel {
+  display: grid;
+  gap: 12px;
+}
+
+.tap-button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #08213a;
+  background: linear-gradient(180deg, #8fceff, #67b8f4);
+  cursor: pointer;
+  transition: transform 0.08s ease, filter 0.2s ease;
+}
+
+.tap-button:hover {
+  filter: brightness(1.08);
+}
+
+.tap-button:active,
+.tap-button.reeling {
+  transform: translateY(1px) scale(0.995);
+}
+
+.tap-button.flash-success {
+  background: linear-gradient(180deg, #9ef7b7, #4fd082);
+}
+
+.tap-button.flash-fail {
+  background: linear-gradient(180deg, #ffaaaa, #ef5d5d);
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stats p {
+  margin: 0;
+}
+
+.message {
+  margin: 0;
+  min-height: 1.6em;
+  color: #ffdeb3;
+}
+
+.help {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(199, 223, 248, 0.2);
+}
+
+.help h2 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.help ul {
+  margin: 0;
+  padding-left: 1.2em;
+  color: #cae0f1;
+}
+
+@keyframes swim-right {
+  0% { left: -12%; transform: translateY(-50%) scaleX(1); }
+  45% { transform: translateY(-62%) scaleX(1); }
+  100% { left: 110%; transform: translateY(-50%) scaleX(1); }
+}
+
+@keyframes swim-left {
+  0% { left: 110%; transform: translateY(-50%) scaleX(-1); }
+  50% { transform: translateY(-40%) scaleX(-1); }
+  100% { left: -12%; transform: translateY(-50%) scaleX(-1); }
+}
+
+@keyframes splash-pop {
+  0% { opacity: 0; transform: translate(-50%, -45%) scale(0.4); }
+  35% { opacity: 1; transform: translate(-50%, -62%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -75%) scale(0.75); }
+}
+
+@keyframes wave-flow {
+  from { transform: translateX(0); }
+  to { transform: translateX(40px); }
+}
